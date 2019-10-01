@@ -1,3 +1,5 @@
+element-ui 的表格与无限滚动的结合（el-table + infinite-scroll）。
+
 # 教程
 
 此指令依赖于 element-ui，使用前请熟悉：
