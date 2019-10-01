@@ -1,7 +1,6 @@
 {
   "name": "el-table-infinite-scroll",
   "version": "0.1.0",
-  "private": true,
   "author": "yujinpan",
   "main": "lib/index.js",
   "scripts": {
