@@ -14,7 +14,7 @@ const BundleAnalyzerPlugin = argv.includes('--analyzer')
 
 module.exports = {
   indexPath: '../../_layouts/default.html',
-  outputDir: 'docs/assets',
+  outputDir: 'vender/assets',
 
   publicPath: process.env.VUE_APP_BASE_URL,
   productionSourceMap: false,
