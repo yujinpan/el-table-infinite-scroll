@@ -34,6 +34,9 @@ export default {
       this.$message.success('加载下一页');
       this.tableData = this.tableData.concat(exampleData);
     }
+  },
+  mounted() {
+    this.$message.info('滑动到底部试试～');
   }
 };
 </script>
