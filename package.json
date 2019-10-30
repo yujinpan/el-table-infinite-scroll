@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "author": "yujinpan",
   "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
