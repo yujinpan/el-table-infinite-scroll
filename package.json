@@ -1,5 +1,11 @@
 {
   "name": "el-table-infinite-scroll",
+  "keywords": [
+    "table-infinite-scroll",
+    "el-table",
+    "infinite-scroll",
+    "element-ui"
+  ],
   "version": "1.0.1",
   "author": "yujinpan",
   "main": "lib/index.js",
