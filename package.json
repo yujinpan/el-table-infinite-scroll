@@ -62,7 +62,7 @@
     "url": "https://github.com/yujinpan/el-table-infinite-scroll/issues"
   },
   "homepage": "https://github.com/yujinpan/el-table-infinite-scroll#readme",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:yujinpan/el-table-infinite-scroll.git"

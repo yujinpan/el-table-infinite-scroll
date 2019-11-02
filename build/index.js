@@ -1,7 +1,15 @@
 const defaultRollupConfig = require('./rollup.config.js');
 const rollup = require('rollup');
 
+const banner =
+  '/*!\n' +
+  ` * el-table-infinite-scroll v${require('../package.json').version}\n` +
+  ` * (c) 2019-${new Date().getFullYear()} yujinpan\n` +
+  ' * Released under the MIT License.\n' +
+  ' */\n';
+
 const defaultOutput = {
+  banner,
   dir: 'lib/',
   format: 'es',
   sourcemap: true
