@@ -22,8 +22,13 @@ export default {
 
     // dom 渲染后
     setTimeout(() => {
-      // 设置不立即加载属性
-      scrollElem.setAttribute('infinite-scroll-immediate', 'false');
+      if (!scrollElem.style.height) {
+        scrollElem.style.height = '400px';
+        console.warn(
+          '[el-table-infinite-scroll]:',
+          '请设置 el-table 的高度，可以设置为 auto/100%！不然会一直加载！'
+        );
+      }
 
       // 绑定值
       elInserted(scrollElem, binding, ...params);
