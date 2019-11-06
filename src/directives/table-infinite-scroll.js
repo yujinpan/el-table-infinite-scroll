@@ -20,13 +20,17 @@ export default {
     // 设置自动滚动
     scrollElem.style.overflowY = 'auto';
 
-    // 加入滚动路基
+    // dom 渲染后
     setTimeout(() => {
+      // 设置不立即加载属性
+      scrollElem.setAttribute('infinite-scroll-immediate', 'false');
+
+      // 绑定值
       elInserted(scrollElem, binding, ...params);
 
       // 将子集的引用放入 el 上，用于 unbind 中销毁事件
       el[elScope] = scrollElem[elScope];
-    });
+    }, 0);
   },
   unbind: elUnbind
 };
