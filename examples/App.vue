@@ -1,18 +1,37 @@
 <template>
-  <el-table
-    border
-    height="400px"
-    v-el-table-infinite-scroll="load"
-    :data="tableData"
-  >
-    <el-table-column prop="date" label="日期" width="180"> </el-table-column>
-    <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
-    <el-table-column prop="address" label="地址"> </el-table-column>
-  </el-table>
+  <el-row id="app">
+    <el-col :span="12">
+      <el-table border v-el-table-infinite-scroll="load" :data="tableData">
+        <el-table-column prop="date" label="日期" width="180">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="180">
+        </el-table-column>
+        <el-table-column prop="address" label="地址"> </el-table-column>
+      </el-table>
+      <el-button style="margin: 15px;" type="warning"
+        >请设置 el-table 的高度，可以设置为
+        auto/100%(自适应高度)！不然会一直加载！</el-button
+      >
+    </el-col>
+    <el-col :span="12">
+      <el-table
+        border
+        height="100%"
+        v-el-table-infinite-scroll="load"
+        :data="tableData"
+      >
+        <el-table-column prop="date" label="日期" width="180">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="180">
+        </el-table-column>
+        <el-table-column prop="address" label="地址"> </el-table-column>
+      </el-table>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-import elTableInfiniteScroll from '../lib';
+import elTableInfiniteScroll from '../src';
 
 const exampleData = new Array(10).fill({
   date: '2016-05-02',
@@ -40,6 +59,27 @@ export default {
   }
 };
 </script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#app,
+.el-row,
+.el-col {
+  height: 100%;
+}
+body {
+  color: #666;
+}
+</style>
 
 <style scoped>
 .el-table {
