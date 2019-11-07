@@ -30,7 +30,10 @@ export default {
         );
       }
 
-      // 绑定值
+      // fix: windows/chrome 的 scrollTop + clientHeight 与 scrollHeight 不一致的 BUG
+      scrollElem.setAttribute('infinite-scroll-distance', '1');
+
+      // 绑定 infinite-scroll
       elInserted(scrollElem, binding, ...params);
 
       // 将子集的引用放入 el 上，用于 unbind 中销毁事件
