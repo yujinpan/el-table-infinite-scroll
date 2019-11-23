@@ -3,20 +3,18 @@
  */
 import elInfiniteScroll from 'element-ui/lib/infinite-scroll';
 
-const msgTitle = `[${require('../../package').name}]: `;
-
-const elInserted = elInfiniteScroll.inserted;
-const elUnbind = elInfiniteScroll.unbind;
-const elScope = 'ElInfiniteScroll';
+const elScope = 'ElInfiniteScroll'; // scope name
+const msgTitle = `[${require('../../package').name}]: `; // message title
+const elTableScrollWrapperClass = '.el-table__body-wrapper';
 
 export default {
-  inserted(el, binding, ...params) {
+  inserted(el, binding, vnode, oldVnode) {
     // 获取 table 中的滚动层
-    const scrollElem = el.querySelector('.el-table__body-wrapper');
+    const scrollElem = el.querySelector(elTableScrollWrapperClass);
 
     // 如果没找到元素，返回错误
     if (!scrollElem) {
-      throw `${msgTitle}找不到 .el-table__body-wrapper 容器`;
+      throw `${msgTitle}找不到 ${elTableScrollWrapperClass} 容器`;
     }
 
     // 设置自动滚动
@@ -31,15 +29,38 @@ export default {
         );
       }
 
-      // fix: windows/chrome 的 scrollTop + clientHeight 与 scrollHeight 不一致的 BUG
-      scrollElem.setAttribute('infinite-scroll-distance', '1');
-
       // 绑定 infinite-scroll
-      elInserted(scrollElem, binding, ...params);
+      elInfiniteScroll.inserted(scrollElem, binding, vnode, oldVnode);
 
       // 将子集的引用放入 el 上，用于 unbind 中销毁事件
       el[elScope] = scrollElem[elScope];
     }, 0);
   },
-  unbind: elUnbind
+  componentUpdated(el, binding, vnode) {
+    asyncElOptions(vnode, el, el.querySelector(elTableScrollWrapperClass));
+  },
+  unbind: elInfiniteScroll.unbind
 };
+
+/**
+ * 同步 el-infinite-scroll 的配置项
+ * @param sourceVNode
+ * @param sourceElem
+ * @param targetElem
+ */
+function asyncElOptions(sourceVNode, sourceElem, targetElem) {
+  const context = sourceVNode.context;
+  let value;
+  ['disabled', 'delay', 'immediate'].forEach((name) => {
+    name = 'infinite-scroll-' + name;
+    value = sourceElem.getAttribute(name);
+    if (value !== null) {
+      targetElem.setAttribute(name, context[value] || value);
+    }
+  });
+
+  // fix: windows/chrome 的 scrollTop + clientHeight 与 scrollHeight 不一致的 BUG
+  const name = 'infinite-scroll-distance';
+  value = context[sourceElem.getAttribute(name)];
+  targetElem.setAttribute(name, value < 1 ? 1 : value);
+}

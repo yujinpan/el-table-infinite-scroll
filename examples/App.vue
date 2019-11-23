@@ -2,18 +2,21 @@
   <el-row id="app">
     <el-col :span="8">
       <ul>
-        <li>
-          请尽量设置 el-table 的高度，可以设置为
-          auto/100%（自适应高度），未设置会取 400px
-          的默认值（不然会导致一直加载）。
-        </li>
-        <li>
-          右侧的列表为自适应高度，试试缩放浏览器的高度。
-        </li>
+        <li
+          v-for="item in messageList"
+          :key="item"
+          v-html="item"
+          style="margin-top: 8px"
+        ></li>
       </ul>
     </el-col>
     <el-col :span="8">
-      <el-table border v-el-table-infinite-scroll="load" :data="tableData">
+      <el-table
+        border
+        v-el-table-infinite-scroll="load"
+        infinite-scroll-disabled="disabled"
+        :data="tableData"
+      >
         <el-table-column prop="date" label="日期" width="180">
         </el-table-column>
         <el-table-column prop="name" label="姓名" width="180">
@@ -26,6 +29,7 @@
         border
         height="100%"
         v-el-table-infinite-scroll="load"
+        infinite-scroll-disabled="disabled"
         :data="tableData"
       >
         <el-table-column prop="date" label="日期" width="180">
@@ -53,13 +57,26 @@ export default {
   },
   data() {
     return {
-      tableData: exampleData
+      page: 1,
+      disabled: false,
+      tableData: exampleData,
+      messageList: [
+        '请尽量设置 el-table 的高度，可以设置为 auto/100%（自适应高度），未设置会取 400px 的默认值（不然会导致一直加载）。',
+        '右侧的列表为自适应高度，试试缩放浏览器的高度。',
+        '配置参数请参考官网：<br /><a target="_blank" href="https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes">https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes</a>'
+      ]
     };
   },
   methods: {
     load() {
-      this.$message.success('加载下一页');
+      if (this.page > 3) {
+        this.disabled = true;
+        this.$message.info('全部加载完毕（infinite-scroll-disabled="true"）');
+      } else {
+        this.$message.success('加载下一页');
+      }
       this.tableData = this.tableData.concat(exampleData);
+      this.page++;
     }
   },
   mounted() {
