@@ -27,7 +27,7 @@ export default {
       if (!scrollElem.style.height) {
         scrollElem.style.height = '400px';
         console.warn(
-          `${msgTitle}请尽量设置 el-table 的高度，可以设置为 auto/100%（自适应高度），未设置会取 400px 的默认值（不然会导致一直加载）。`
+          `${msgTitle}请尽量设置 el-table 的高度，可以设置为 auto/100%（自适应高度），未设置会取 400px 的默认值（不然会导致一直加载）`
         );
       }
 
