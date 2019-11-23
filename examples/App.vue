@@ -15,6 +15,7 @@
         border
         v-el-table-infinite-scroll="load"
         infinite-scroll-disabled="disabled"
+        height="auto"
         :data="tableData"
       >
         <el-table-column prop="date" label="日期" width="180">
