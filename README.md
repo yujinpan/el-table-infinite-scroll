@@ -4,10 +4,10 @@ element-ui 的表格与无限滚动的结合（el-table + infinite-scroll）。
 
 # 教程
 
-此指令依赖于 element-ui，使用前请熟悉：
+此指令依赖于 element-ui@2.12.0，使用前请熟悉：
 
-- element-ui@ [表格](https://element.eleme.cn/#/zh-CN/component/table)
-- element-ui [无限滚动指令](https://element.eleme.cn/#/zh-CN/component/infiniteScroll)
+- element-ui@2.12.0 [表格](https://element.eleme.cn/#/zh-CN/component/table)
+- element-ui@2.12.0 [无限滚动指令](https://element.eleme.cn/#/zh-CN/component/infiniteScroll)
 
 ## 安装
 
