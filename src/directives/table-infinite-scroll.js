@@ -3,6 +3,8 @@
  */
 import elInfiniteScroll from 'element-ui/lib/infinite-scroll';
 
+const msgTitle = `[${require('../../package').name}]: `;
+
 const elInserted = elInfiniteScroll.inserted;
 const elUnbind = elInfiniteScroll.unbind;
 const elScope = 'ElInfiniteScroll';
@@ -14,7 +16,7 @@ export default {
 
     // 如果没找到元素，返回错误
     if (!scrollElem) {
-      throw 'table-infinite-scroll: 找不到 .el-table__body-wrapper 容器';
+      throw `${msgTitle}找不到 .el-table__body-wrapper 容器`;
     }
 
     // 设置自动滚动
@@ -25,8 +27,7 @@ export default {
       if (!scrollElem.style.height) {
         scrollElem.style.height = '400px';
         console.warn(
-          '[el-table-infinite-scroll]:',
-          '请设置 el-table 的高度，可以设置为 auto/100%！不然会一直加载！'
+          `${msgTitle}请尽量设置 el-table 的高度，可以设置为 auto/100%（自适应高度），未设置会取 400px 的默认值（不然会导致一直加载）。`
         );
       }
 
