@@ -6,7 +6,7 @@
     "infinite-scroll",
     "element-ui"
   ],
-  "version": "1.0.6",
+  "version": "1.0.5",
   "author": "yujinpan",
   "main": "lib/index.js",
   "files": [
@@ -17,7 +17,7 @@
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "cross-env NODE_ENV=production node build",
-    "build-example": "vue-cli-service build",
+    "build:example": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
