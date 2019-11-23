@@ -4,7 +4,7 @@
 import elInfiniteScroll from 'element-ui/lib/infinite-scroll';
 
 const elScope = 'ElInfiniteScroll'; // scope name
-const msgTitle = `[${require('../../package').name}]: `; // message title
+const msgTitle = `[el-table-infinite-scroll]: `; // message title
 const elTableScrollWrapperClass = '.el-table__body-wrapper';
 
 export default {
