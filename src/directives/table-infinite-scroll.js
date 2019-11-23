@@ -29,6 +29,8 @@ export default {
         );
       }
 
+      asyncElOptions(vnode, el, scrollElem);
+
       // 绑定 infinite-scroll
       elInfiniteScroll.inserted(scrollElem, binding, vnode, oldVnode);
 
@@ -61,6 +63,7 @@ function asyncElOptions(sourceVNode, sourceElem, targetElem) {
 
   // fix: windows/chrome 的 scrollTop + clientHeight 与 scrollHeight 不一致的 BUG
   const name = 'infinite-scroll-distance';
-  value = context[sourceElem.getAttribute(name)];
+  value = sourceElem.getAttribute(name);
+  value = context[value] || value;
   targetElem.setAttribute(name, value < 1 ? 1 : value);
 }
