@@ -61,6 +61,9 @@ export default {
       disabled: false,
       tableData: exampleData,
       messageList: [
+        `<h3>el-table-infinite-scroll</h3>`,
+        `<h4>version: ${require('../package').version}</h4>`,
+        `<h4>注意事项：</h4>`,
         '请尽量设置 el-table 的高度，可以设置为 auto/100%（自适应高度），未设置会取 400px 的默认值（不然会导致一直加载）。',
         '右侧的列表为自适应高度，试试缩放浏览器的高度。',
         '配置参数请参考官网：<br /><a target="_blank" href="https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes">https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes</a>'
