@@ -19,12 +19,6 @@ module.exports = {
   publicPath: process.env.VUE_APP_BASE_URL,
   productionSourceMap: false,
 
-  // 开发服务器配置
-  devServer: {
-    // 代理配置
-    proxy: require('./proxy.config')
-  },
-
   // webpack config
   configureWebpack: {
     entry: './examples/main.js',
