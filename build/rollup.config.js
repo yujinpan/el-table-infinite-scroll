@@ -35,17 +35,7 @@ module.exports = {
     // 替换 env 文件的环境变量
     replace({
       'process.env.NODE_ENV': toJSON('production'),
-      'process.env.VUE_APP_BASE_API': toJSON(process.env.VUE_APP_BASE_API),
-      'process.env.VUE_APP_BASE_HOST': toJSON(process.env.VUE_APP_BASE_HOST),
-      'process.env.VUE_APP_BASE_HOST_6443': toJSON(
-        process.env.VUE_APP_BASE_HOST_6443
-      ),
-      'process.env.VUE_APP_BASE_URL': toJSON(
-        process.env.VUE_APP_BASE_HOST_6443
-      ),
-      'process.env.VUE_APP_BASE_GIS_SERVER': toJSON(
-        process.env.VUE_APP_BASE_GIS_SERVER
-      )
+      'process.env.VUE_APP_BASE_URL': toJSON(process.env.VUE_APP_BASE_URL)
     }),
     resolve({
       extensions: ['.js', '.vue']
