@@ -63,7 +63,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "ie 9"
   ],
   "bugs": {
     "url": "https://github.com/yujinpan/el-table-infinite-scroll/issues"
