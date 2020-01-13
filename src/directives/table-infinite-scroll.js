@@ -51,19 +51,17 @@ export default {
  * @param targetElem
  */
 function asyncElOptions(sourceVNode, sourceElem, targetElem) {
-  const context = sourceVNode.context;
   let value;
   ['disabled', 'delay', 'immediate'].forEach((name) => {
     name = 'infinite-scroll-' + name;
     value = sourceElem.getAttribute(name);
     if (value !== null) {
-      targetElem.setAttribute(name, context[value] || value);
+      targetElem.setAttribute(name, value);
     }
   });
 
   // fix: windows/chrome 的 scrollTop + clientHeight 与 scrollHeight 不一致的 BUG
   const name = 'infinite-scroll-distance';
   value = sourceElem.getAttribute(name);
-  value = context[value] || value;
   targetElem.setAttribute(name, value < 1 ? 1 : value);
 }
