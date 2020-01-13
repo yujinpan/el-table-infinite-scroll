@@ -9,6 +9,14 @@
           style="margin-top: 8px"
         ></li>
       </ul>
+      <el-divider></el-divider>
+      <div style="padding: 0 20px;">
+        <h4>部分选项:</h4>
+        <label
+          >禁用滚动：
+          <el-switch v-model="disabled"></el-switch>
+        </label>
+      </div>
     </el-col>
     <el-col :span="8">
       <el-table
