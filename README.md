@@ -27,8 +27,10 @@ Vue.use(elTableInfiniteScroll);
 ## 局部引入
 
 ```vue
+
 <script>
 import elTableInfiniteScroll from 'el-table-infinite-scroll';
+
 export default {
   directives: {
     'el-table-infinite-scroll': elTableInfiniteScroll
@@ -40,6 +42,7 @@ export default {
 ## 组件中使用
 
 ```vue
+
 <template>
   <el-table
     border
@@ -47,9 +50,9 @@ export default {
     v-el-table-infinite-scroll="load"
     :data="tableData"
   >
-    <el-table-column prop="date" label="日期" width="180"> </el-table-column>
-    <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
-    <el-table-column prop="address" label="地址"> </el-table-column>
+    <el-table-column prop="date" label="日期" width="180"></el-table-column>
+    <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+    <el-table-column prop="address" label="地址"></el-table-column>
   </el-table>
 </template>
 
@@ -89,4 +92,11 @@ export default {
 
 ## 配置选项
 
-参考 element-ui 官网 [https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes](https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes)
+参考 element-ui
+官网 [https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes](https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes)
+
+# 贡献
+
+感谢 [JetBrains](https://www.jetbrains.com/?from=el-table-infinite-scroll) 支持我的免费开源许可证。
+
+![JetBrains](./jetbrains.svg)
