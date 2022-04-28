@@ -57,6 +57,8 @@ function asyncElOptions(sourceVNode, sourceElem, targetElem) {
     value = sourceElem.getAttribute(name);
     if (value !== null) {
       targetElem.setAttribute(name, value);
+    } else {
+      targetElem.removeAttribute(name);
     }
   });
 
