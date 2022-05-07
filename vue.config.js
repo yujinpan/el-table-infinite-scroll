@@ -6,9 +6,9 @@ const BundleAnalyzerPlugin = argv.includes('--analyzer')
   : [];
 
 module.exports = {
-  indexPath: '../../_layouts/default.html',
+  indexPath: '../_layouts/default.html',
 
-  publicPath: '/el-table-infinite-scroll/',
+  publicPath: '/el-table-infinite-scroll/dist/',
 
   // webpack config
   configureWebpack: {
