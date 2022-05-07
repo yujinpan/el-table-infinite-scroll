@@ -5,6 +5,7 @@ module.exports = {
     ` * (c) 2019-${new Date().getFullYear()} yujinpan\n` +
     ' */\n',
   inputFiles: ['**/*'],
-  outputDir: 'dist',
+  outputDir: 'lib',
+  typesOutputDir: 'lib',
   singleFile: false
 };
