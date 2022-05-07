@@ -22,6 +22,7 @@ const ElTableInfiniteScroll: DirectiveOptions = {
     setTimeout(() => {
       if (!el.style.height) {
         scrollElem.style.height = '400px';
+        // @ts-ignore
         console.warn(
           `${msgTitle} el-table height required, otherwise will set default value: 400px`
         );
