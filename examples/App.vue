@@ -1,5 +1,5 @@
 <template>
-  <el-row id="app">
+  <el-row id="app" gutter="20">
     <el-col :span="8">
       <ul>
         <li
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import elTableInfiniteScroll from '../src';
+import elTableInfiniteScroll from '@/index.ts';
 
 const exampleData = new Array(10).fill({
   date: '2016-05-02',
