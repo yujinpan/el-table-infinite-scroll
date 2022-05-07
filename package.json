@@ -24,7 +24,7 @@
   "dependencies": {
     "core-js": "^3.x",
     "element-ui": "^2.12.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.15",
@@ -43,7 +43,7 @@
     "rollupx": "^2.0.5",
     "typescript": "^4.6.4",
     "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.14",
     "webpack-bundle-analyzer": "^3.3.2"
   },
   "postcss": {
