@@ -15,42 +15,48 @@
     "lib"
   ],
   "scripts": {
-    "start": "npm run serve",
-    "serve": "vue-cli-service serve",
-    "build": "cross-env NODE_ENV=production rollupx",
-    "build:example": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "rollupx && eslint --fix lib/**/*.d.ts --no-ignore",
+    "preview": "vite preview --port 4173",
+    "test:unit": "vitest --environment jsdom",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "docs:dev": "npm run generate:raws && vitepress dev docs",
+    "docs:build": "npm run generate:raws && vitepress build docs && node run generate:layouts",
+    "docs:serve": "npm run generate:raws && vitepress serve docs",
+    "generate:raws": "node docs/.vitepress/components/raws-generate.js",
+    "generate:layouts": "mv docs/.vitepress/dist . && cp dist/index.html _layouts/default.html"
   },
   "dependencies": {
-    "core-js": "^3.x",
-    "element-ui": "^2.12.0",
-    "vue": "^2.6.14"
+    "element-plus": "^2.2.12",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-plugin-typescript": "^4.5.15",
-    "@vue/cli-service": "^4.5.15",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "@vue/eslint-config-typescript": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-component": "^1.1.1",
-    "cross-env": "^5.2.0",
-    "dotenv": "^8.0.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "rollupx": "^2.0.5",
-    "typescript": "^4.6.4",
-    "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.14",
-    "webpack-bundle-analyzer": "^3.3.2"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    "@rushstack/eslint-patch": "^1.1.0",
+    "@types/jsdom": "^16.2.14",
+    "@types/node": "^16.11.45",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/test-utils": "^2.0.2",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "jsdom": "^20.0.0",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "rollupx": "^3.0.0-alpha.1",
+    "sass": "^1.54.0",
+    "shiki": "^0.10.1",
+    "typescript": "~4.7.4",
+    "vite": "^3.0.1",
+    "vitepress": "^1.0.0-alpha.4",
+    "vitest": "^0.18.1",
+    "vue": "^3.2.37",
+    "vue-tsc": "^0.38.8"
   },
   "browserslist": [
     "> 1%",
