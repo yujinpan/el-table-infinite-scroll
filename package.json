@@ -29,8 +29,9 @@
     "generate:layouts": "mv docs/.vitepress/dist . && cp dist/index.html _layouts/default.html"
   },
   "dependencies": {
-    "element-plus": "^2.2.12",
-    "vue": "^3.2.37"
+    "core-js": "^3.x",
+    "element-plus": "^2.x",
+    "vue": "^3.x"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
