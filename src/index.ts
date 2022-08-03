@@ -1,8 +1,8 @@
+import type { App } from 'vue';
 import ElTableInfiniteScroll from './el-table-infinite-scroll';
 
-// @ts-ignore
-ElTableInfiniteScroll.install = (Vue) => {
-  Vue.directive('el-table-infinite-scroll', ElTableInfiniteScroll);
+ElTableInfiniteScroll.install = (vue: App) => {
+  vue.directive('el-table-infinite-scroll', ElTableInfiniteScroll);
 };
 
 export default ElTableInfiniteScroll;

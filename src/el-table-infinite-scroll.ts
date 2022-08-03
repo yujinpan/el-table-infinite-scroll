@@ -1,13 +1,13 @@
-import InfiniteScroll from 'element-ui/lib/infinite-scroll';
-import { DirectiveOptions } from 'vue';
+import type { ObjectDirective } from 'vue';
+import { ElInfiniteScroll } from 'element-plus';
 import { syncAttrs } from './utils';
 
 const elScope = 'ElInfiniteScroll';
 const msgTitle = '[el-table-infinite-scroll]: ';
-const elTableScrollWrapperClass = '.el-table__body-wrapper';
+const elTableScrollWrapperClass = '.el-scrollbar__wrap';
 
-const ElTableInfiniteScroll: DirectiveOptions = {
-  inserted(el, binding, VNode, oldVNode) {
+const ElTableInfiniteScroll: ObjectDirective = {
+  mounted(el, binding, VNode, oldVNode) {
     const scrollElem: HTMLElement = el.querySelector(elTableScrollWrapperClass);
 
     if (!scrollElem) {
@@ -30,17 +30,24 @@ const ElTableInfiniteScroll: DirectiveOptions = {
 
       syncOptions(el, scrollElem);
 
-      // use `InfiniteScroll`
-      InfiniteScroll.inserted(scrollElem, binding, VNode, oldVNode);
+      // use `ElInfiniteScroll`
+      (
+        ElInfiniteScroll.mounted as Exclude<
+          ObjectDirective['mounted'],
+          undefined
+        >
+      )(scrollElem, binding, VNode, oldVNode);
 
-      // used by unbind, destroy listener events
-      el[elScope] = scrollElem[elScope];
+      // used by mounted, destroy listener events
+      el[elScope] = (scrollElem as HTMLElement & { [key: string]: object })[
+        elScope
+      ];
     }, 0);
   },
-  componentUpdated(el) {
+  updated(el) {
     syncOptions(el, el.querySelector(elTableScrollWrapperClass));
   },
-  unbind: InfiniteScroll.unbind
+  unmounted: ElInfiniteScroll.unmounted,
 };
 
 export default ElTableInfiniteScroll;
@@ -50,11 +57,11 @@ function syncOptions(sourceElem: HTMLElement, targetElem: HTMLElement) {
     'infinite-scroll-disabled',
     'infinite-scroll-delay',
     'infinite-scroll-immediate',
-    'infinite-scroll-distance'
+    'infinite-scroll-distance',
   ]);
 
   // fix: windows/chrome `scrollTop + clientHeight` is difference with `scrollHeight`
   const name = 'infinite-scroll-distance';
-  const value = +sourceElem.getAttribute(name) || 0;
+  const value = +(sourceElem.getAttribute(name) || 0);
   targetElem.setAttribute(name, (value < 1 ? 1 : value) + '');
 }
