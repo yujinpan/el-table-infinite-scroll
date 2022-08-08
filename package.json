@@ -4,7 +4,7 @@
     "table-infinite-scroll",
     "el-table",
     "infinite-scroll",
-    "element-ui"
+    "element-plus"
   ],
   "version": "2.0.0",
   "author": "yujinpan",
