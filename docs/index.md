@@ -2,11 +2,13 @@
 title: home
 ---
 
-# el-table-infinite-scroll
+# el-table-infinite-scroll(vue3)
+
+<!--@include: ./support.md-->
 
 ## Install
 
-```shell
+```sh
 npm install --save el-table-infinite-scroll
 ```
 
