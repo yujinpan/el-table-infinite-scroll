@@ -1,7 +1,9 @@
-import type { App } from 'vue';
+import type { App, ObjectDirective } from 'vue';
 import ElTableInfiniteScroll from './el-table-infinite-scroll';
 
-ElTableInfiniteScroll.install = (vue: App) => {
+(
+  ElTableInfiniteScroll as ObjectDirective & { install: (vue: App) => void }
+).install = (vue: App) => {
   vue.directive('el-table-infinite-scroll', ElTableInfiniteScroll);
 };
 
