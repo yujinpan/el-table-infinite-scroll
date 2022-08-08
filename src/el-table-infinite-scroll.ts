@@ -2,7 +2,6 @@ import type { ObjectDirective } from 'vue';
 import { ElInfiniteScroll } from 'element-plus';
 import { syncAttrs } from './utils';
 
-const elScope = 'ElInfiniteScroll';
 const msgTitle = '[el-table-infinite-scroll]: ';
 const elTableScrollWrapperClass = '.el-scrollbar__wrap';
 
@@ -37,17 +36,20 @@ const ElTableInfiniteScroll: ObjectDirective = {
           undefined
         >
       )(scrollElem, binding, VNode, oldVNode);
-
-      // used by mounted, destroy listener events
-      el[elScope] = (scrollElem as HTMLElement & { [key: string]: object })[
-        elScope
-      ];
     }, 0);
   },
   updated(el) {
     syncOptions(el, el.querySelector(elTableScrollWrapperClass));
   },
-  unmounted: ElInfiniteScroll.unmounted,
+  unmounted(el, ...args) {
+    const scrollElem: HTMLElement = el.querySelector(elTableScrollWrapperClass);
+    (
+      ElInfiniteScroll.unmounted as Exclude<
+        ObjectDirective['unmounted'],
+        undefined
+      >
+    )(scrollElem, ...args);
+  },
 };
 
 export default ElTableInfiniteScroll;
