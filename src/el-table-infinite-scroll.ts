@@ -23,7 +23,7 @@ const ElTableInfiniteScroll: ObjectDirective = {
         scrollElem.style.height = '400px';
         // eslint-disable-next-line
         console.warn(
-          `${msgTitle} el-table height required, otherwise will set scrollbar default height: 400px`
+          `${msgTitle}el-table height required, otherwise will set scrollbar default height: 400px`
         );
       }
 
