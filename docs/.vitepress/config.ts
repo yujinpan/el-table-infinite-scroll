@@ -3,9 +3,9 @@ import { defineConfig } from 'vitepress';
 
 export default defineConfig({
   appearance: true,
-  base: '/el-table-infinite-scroll/docs/.vitepress/dist/',
+  base: '/el-table-infinite-scroll/',
   title: 'el-table-infinite-scroll',
-  description: 'el-table-infinite-scroll description',
+  description: 'infinite scroll for el-table.',
 
   themeConfig: {
     logo: '/logo.svg',
