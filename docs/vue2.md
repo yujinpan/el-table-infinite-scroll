@@ -4,6 +4,8 @@ title: vue2
 
 # el-table-infinite-scroll(vue2)
 
+<!--@include: ./description.md-->
+
 <!--@include: ./support.md-->
 
 ## Install
