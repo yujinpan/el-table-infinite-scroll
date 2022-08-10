@@ -38,7 +38,7 @@ app.mount("#app");
 </template>
 
 <script setup>
-import ElTableInfiniteScroll as vElTableInfiniteScroll from "el-table-infinite-scroll";
+import { default as vElTableInfiniteScroll } from "el-table-infinite-scroll";
 </script>
 ```
 
