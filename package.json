@@ -8,7 +8,7 @@
   ],
   "version": "3.0.0",
   "author": "yujinpan",
-  "main": "lib/index.js",
+  "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "src",
@@ -23,10 +23,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "docs:dev": "npm run generate:raws && vitepress dev docs",
-    "docs:build": "npm run generate:raws && vitepress build docs && node run generate:layouts",
-    "docs:serve": "npm run generate:raws && vitepress serve docs",
-    "generate:raws": "node docs/.vitepress/components/raws-generate.js",
-    "generate:layouts": "mv docs/.vitepress/dist . && cp dist/index.html _layouts/default.html"
+    "docs:build": "npm run generate:raws && vitepress build docs",
+    "docs:serve": "vitepress serve docs --port 8080",
+    "generate:raws": "node docs/.vitepress/components/raws-generate.js"
   },
   "dependencies": {
     "core-js": "^3.x",

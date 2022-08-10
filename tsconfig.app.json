@@ -5,7 +5,9 @@
     "src/**/*",
     "src/**/*.vue",
     "dev/**/*",
-    "dev/**/*.vue"
+    "dev/**/*.vue",
+    "docs/**/*",
+    "docs/**/*.vue"
   ],
   "exclude": ["src/**/__tests__/*", "src/**/*.spec.*"],
   "compilerOptions": {

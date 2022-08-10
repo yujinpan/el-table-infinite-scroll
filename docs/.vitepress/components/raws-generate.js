@@ -15,6 +15,8 @@ async function getComponentsMarkdowns() {
   const raws = {};
   await Promise.all(
     modules.map(async (id) => {
+      // await will mess up the ordering, initialize first
+      raws[getFileName(id)] = '';
       raws[getFileName(id)] = await codeToHighlight(
         fs.readFileSync(id).toString()
       );

@@ -1,17 +1,14 @@
-const path = require('path');
+import path from 'path';
+import { defineConfig } from 'vitepress';
 
-module.exports = {
+export default defineConfig({
   appearance: true,
-  base: '/el-table-infinite-scroll/dist/',
+  base: '/el-table-infinite-scroll/docs/.vitepress/dist/',
   title: 'el-table-infinite-scroll',
   description: 'el-table-infinite-scroll description',
-  dest: path.resolve(__dirname, '../../dist'),
-
-  head: [['link', {}]],
 
   themeConfig: {
     logo: '/logo.svg',
-
     socialLinks: [
       {
         icon: 'github',
@@ -24,4 +21,12 @@ module.exports = {
     },
     lastUpdatedText: 'Updated Date',
   },
-};
+
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../src'),
+      },
+    },
+  },
+});
