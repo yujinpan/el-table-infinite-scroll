@@ -1,102 +1,191 @@
-element-ui 的表格与无限滚动的结合（el-table + infinite-scroll）。
+# el-table-infinite-scroll
 
-- 查看实例 [https://yujinpan.github.io/el-table-infinite-scroll/](https://yujinpan.github.io/el-table-infinite-scroll/)
+Infinite scroll for el-table.
 
-# 教程
+> This directive only does event forwarding,
+> which is equivalent to replacing the target DOM
+> of `ElInfiniteScroll` with the scroll layer of `ElTable`.
 
-此指令依赖于 element-ui@2.12.0，使用前请熟悉：
+## Documentation
 
-- element-ui@2.12.0 [表格](https://element.eleme.cn/#/zh-CN/component/table)
-- element-ui@2.12.0 [无限滚动指令](https://element.eleme.cn/#/zh-CN/component/infiniteScroll)
+[https://yujinpan.github.io/el-table-infinite-scroll](https://yujinpan.github.io/el-table-infinite-scroll)
 
-## 安装
+## vue3 + element-plus
 
-```
+### Install
+
+```sh
 npm install --save el-table-infinite-scroll
 ```
 
-## 全局引入
+### Usage
 
+#### Global register
+
+```js
+import { createApp } from "vue";
+import App from "./src/App.vue";
+
+import ElTableInfiniteScroll from "el-table-infinite-scroll";
+
+const app = createApp(App);
+
+app.use(ElTableInfiniteScroll);
+app.mount("#app");
 ```
-import Vue from 'vue';
-import elTableInfiniteScroll from 'el-table-infinite-scroll';
 
-Vue.use(elTableInfiniteScroll);
-```
-
-## 局部引入
+#### Component register
 
 ```vue
+<template>
+  <el-table v-el-table-infinite-scroll="load"></el-table>
+</template>
 
-<script>
-import elTableInfiniteScroll from 'el-table-infinite-scroll';
-
-export default {
-  directives: {
-    'el-table-infinite-scroll': elTableInfiniteScroll
-  }
-}
+<script setup>
+import { default as vElTableInfiniteScroll } from "el-table-infinite-scroll";
 </script>
 ```
 
-## 组件中使用
+### Example
 
 ```vue
-
 <template>
   <el-table
-    border
-    height="400px"
     v-el-table-infinite-scroll="load"
-    :data="tableData"
+    :data="data"
+    :infinite-scroll-disabled="disabled"
+    height="200px"
   >
-    <el-table-column prop="date" label="日期" width="180"></el-table-column>
-    <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-    <el-table-column prop="address" label="地址"></el-table-column>
+    <el-table-column type="index" />
+    <el-table-column prop="date" label="date" />
+    <el-table-column prop="name" label="name" />
+    <el-table-column prop="age" label="age" />
+  </el-table>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const dataTemplate = new Array(10).fill({
+  date: "2009-01-01",
+  name: "Tom",
+  age: "30",
+});
+
+const data = ref([]);
+const disabled = ref(false);
+const page = ref(0);
+const total = ref(5);
+
+const load = () => {
+  if (disabled.value) return;
+
+  page.value++;
+  if (page.value <= total.value) {
+    data.value = data.value.concat(dataTemplate);
+  }
+
+  if (page.value === total.value) {
+    disabled.value = true;
+  }
+};
+</script>
+```
+
+### Options
+
+Supported [element-plus/infinite-scroll](https://element-plus.org/zh-CN/component/infinite-scroll.html#指令) all options.
+
+## vue2 + element-ui
+
+### Install
+
+```sh
+npm install --save el-table-infinite-scroll@2
+```
+
+### Usage
+
+#### Global register
+
+```js
+import Vue from "vue";
+
+import ElTableInfiniteScroll from "el-table-infinite-scroll";
+
+Vue.directive("el-table-infinite-scroll", ElTableInfiniteScroll);
+```
+
+#### Component register
+
+```vue
+<script>
+import ElTableInfiniteScroll from "el-table-infinite-scroll";
+
+export default {
+  directives: {
+    "el-table-infinite-scroll": ElTableInfiniteScroll,
+  },
+};
+</script>
+```
+
+### Example
+
+```vue
+<template>
+  <el-table
+    v-el-table-infinite-scroll="load"
+    :data="data"
+    :infinite-scroll-disabled="disabled"
+    height="200px"
+  >
+    <el-table-column type="index" />
+    <el-table-column prop="date" label="date" />
+    <el-table-column prop="name" label="name" />
+    <el-table-column prop="age" label="age" />
   </el-table>
 </template>
 
 <script>
-import elTableInfiniteScroll from 'el-table-infinite-scroll';
-
-const exampleData = new Array(10).fill({
-  date: '2016-05-02',
-  name: '王小虎',
-  address: '上海市普陀区金沙江路 1518 弄'
+const dataTemplate = new Array(10).fill({
+  date: "2009-01-01",
+  name: "Tom",
+  age: "30",
 });
 
 export default {
-  directives: {
-    'el-table-infinite-scroll': elTableInfiniteScroll
-  },
   data() {
     return {
-      tableData: exampleData
+      data: [],
+      page: 0,
+      total: 5,
     };
   },
   methods: {
     load() {
-      this.$message.success('加载下一页');
-      this.tableData = this.tableData.concat(exampleData);
-    }
-  }
+      if (this.disabled) return;
+
+      this.page++;
+      if (this.page <= this.total) {
+        this.data = this.data.concat(dataTemplate);
+      }
+
+      if (this.page === this.total) {
+        this.disabled = true;
+      }
+    },
+  },
 };
 </script>
-
-<style scoped>
-.el-table {
-  width: 100%;
-}
-</style>
 ```
 
-## 配置选项
+### Options
 
-参考 element-ui
-官网 [https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes](https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes)
+Supported [element-ui/infinite-scroll](https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes) all options.
 
-# 贡献
+## Contribution
 
-感谢 [JetBrains](https://www.jetbrains.com/?from=el-table-infinite-scroll) 支持我的免费开源许可证。
+Thanks to [JetBrains](https://www.jetbrains.com/?from=el-table-infinite-scroll) for supporting my free open source license.
 
 ![JetBrains](./jetbrains.svg)
