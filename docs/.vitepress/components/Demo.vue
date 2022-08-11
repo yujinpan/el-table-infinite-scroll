@@ -44,8 +44,8 @@ ol {
       `;
 
       const componentStyle = Array.from(
-        document.head.querySelectorAll('style')
-      ).filter((item) => !item.textContent.includes('.vp-doc'));
+        document.head.querySelectorAll('style,link')
+      );
 
       [baseStyle, ...componentStyle].forEach((item) => {
         shadowElem.appendChild(item.cloneNode(true));
