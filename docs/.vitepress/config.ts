@@ -35,13 +35,13 @@ export default defineConfig({
       '</body>',
       `
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K00RYP0VFX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S66MPLRFJZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-K00RYP0VFX');
+  gtag('config', 'G-S66MPLRFJZ');
 </script>
 </body>`
     );
