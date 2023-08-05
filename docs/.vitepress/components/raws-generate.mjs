@@ -1,8 +1,11 @@
-const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
-const prettier = require('prettier');
-const { createMarkdownRenderer } = require('vitepress');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import glob from 'glob';
+import prettier from 'prettier';
+import { createMarkdownRenderer } from 'vitepress';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function generateJSON() {
   const markdowns = await getComponentsMarkdowns();

@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('./raws-generate')
+import './raws-generate.mjs'
