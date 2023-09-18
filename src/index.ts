@@ -1,11 +1,13 @@
 import type { App, ObjectDirective, Plugin } from 'vue';
-import ElTableInfiniteScroll from './el-table-infinite-scroll';
+import _ElTableInfiniteScroll from './el-table-infinite-scroll';
 
-const ElTableInfiniteScrollPluggable: ObjectDirective & Plugin = {
-  ...ElTableInfiniteScroll,
-  install: (vue: App) => {
-    vue.directive('el-table-infinite-scroll', ElTableInfiniteScroll);
-  },
-};
+const ElTableInfiniteScroll: ObjectDirective & Plugin = Object.assign(
+  _ElTableInfiniteScroll,
+  {
+    install: (vue: App) => {
+      vue.directive('el-table-infinite-scroll', ElTableInfiniteScroll);
+    },
+  }
+);
 
-export default ElTableInfiniteScrollPluggable;
+export default ElTableInfiniteScroll;
