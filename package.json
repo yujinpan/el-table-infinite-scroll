@@ -15,6 +15,10 @@
     "lib"
   ],
   "scripts": {
+    "publish:beta": "npm version prerelease --preid=beta && npm publish --registry=https://registry.npmjs.org",
+    "publish:patch": "npm version patch && npm publish",
+    "version": "npm run build",
+    "postversion": "git push --all && git push --tags",
     "dev": "vite",
     "build": "rollupx && eslint --fix lib/**/*.d.ts --no-ignore",
     "preview": "vite preview --port 4173",
