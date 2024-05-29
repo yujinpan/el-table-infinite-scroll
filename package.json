@@ -51,6 +51,7 @@
     "@vue/test-utils": "^2.0.2",
     "@vue/tsconfig": "^0.1.3",
     "eslint": "^8.5.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-vue": "^9.0.0",
     "jsdom": "^20.0.0",
     "node-sass": "^7.0.1",
