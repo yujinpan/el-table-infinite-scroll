@@ -4,7 +4,7 @@
 export function syncAttrs(
   sourceElem: HTMLElement,
   targetElem: HTMLElement,
-  attrsKeys: string[]
+  attrsKeys: string[],
 ) {
   let value;
   attrsKeys.forEach((name) => {

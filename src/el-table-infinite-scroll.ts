@@ -1,5 +1,7 @@
-import type { ObjectDirective } from 'vue';
 import { ElInfiniteScroll } from 'element-plus';
+
+import type { ObjectDirective } from 'vue';
+
 import { syncAttrs } from './utils';
 
 const msgTitle = '[el-table-infinite-scroll]: ';
@@ -11,7 +13,7 @@ const ElTableInfiniteScroll: ObjectDirective = {
 
     if (!scrollElem) {
       throw new Error(
-        `${msgTitle}${elTableScrollWrapperClass} element not found.`
+        `${msgTitle}${elTableScrollWrapperClass} element not found.`,
       );
     }
 
@@ -23,7 +25,7 @@ const ElTableInfiniteScroll: ObjectDirective = {
         scrollElem.style.height = '400px';
         // eslint-disable-next-line
         console.warn(
-          `${msgTitle}el-table height required, otherwise will set scrollbar default height: 400px`
+          `${msgTitle}el-table height required, otherwise will set scrollbar default height: 400px`,
         );
       }
 

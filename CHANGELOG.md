@@ -1,3 +1,5 @@
+## [2.0.2](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.1...v2.0.2) (2024-05-29)
+
 ## [3.0.5](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.4...v3.0.5) (2024-05-29)
 
 ## [3.0.4](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.1...v3.0.4) (2024-05-29)
