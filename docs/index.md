@@ -46,7 +46,7 @@ import { default as vElTableInfiniteScroll } from "el-table-infinite-scroll";
 
 Scroll table to bottom to load paginated data.
 
-<Demo component="ScrollLoad" />
+<demo name="ScrollLoad" />
 
 ## Options
 

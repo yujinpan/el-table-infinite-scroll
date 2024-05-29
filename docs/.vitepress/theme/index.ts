@@ -1,16 +1,20 @@
-import type { EnhanceAppContext } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import ElTableInfiniteScroll from '@/index';
+import { enhanceApp } from 'vitepress-plugin-component-demo';
+
+import type { EnhanceAppContext } from 'vitepress';
 
 import { install as installElementPlus } from './element-plus';
-import { install as installComponents } from '../components';
+import ElTableInfiniteScroll from '@/index';
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app }: EnhanceAppContext) {
+  enhanceApp(context: EnhanceAppContext) {
+    const { app } = context;
+
+    enhanceApp(context);
+
     app.use(ElTableInfiniteScroll);
 
     installElementPlus(app);
-    installComponents(app);
   },
 };

@@ -45,3 +45,11 @@ const load = () => {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.el-table {
+  :deep(table) {
+    margin: 0;
+  }
+}
+</style>

@@ -1,42 +1,44 @@
-import path from 'path';
-import { defineConfig } from 'vitepress';
+import path from "path";
+import { defineConfig } from "vitepress";
+import vitePluginDemo from "vitepress-plugin-component-demo/vite-plugin";
 
 export default defineConfig({
   appearance: true,
-  base: '/el-table-infinite-scroll/',
-  title: 'el-table-infinite-scroll',
-  description: 'infinite scroll for el-table.',
+  base: "/el-table-infinite-scroll/",
+  title: "el-table-infinite-scroll",
+  description: "infinite scroll for el-table.",
+  lastUpdated: true,
 
   themeConfig: {
-    logo: '/logo.svg',
-    nav: [{ text: 'Guide', link: '/' }],
+    logo: "/logo.svg",
+    nav: [{ text: "Guide", link: "/" }],
     search: {
-      provider: 'local',
+      provider: "local",
     },
     socialLinks: [
       {
-        icon: 'github',
-        link: 'https://github.com/yujinpan/el-table-infinite-scroll',
+        icon: "github",
+        link: "https://github.com/yujinpan/el-table-infinite-scroll",
       },
     ],
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-2022 yujinpan',
+      message: "Released under the MIT License.",
+      copyright: "Copyright © 2019-2022 yujinpan",
     },
-    lastUpdatedText: 'Updated Date',
   },
 
   vite: {
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '../../src'),
+        "@": path.resolve(__dirname, "../../src"),
       },
     },
+    plugins: [vitePluginDemo()],
   },
 
   async transformHtml(code) {
     return code.replace(
-      '</body>',
+      "</body>",
       `
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S66MPLRFJZ"></script>
