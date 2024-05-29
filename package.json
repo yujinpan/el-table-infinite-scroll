@@ -21,7 +21,8 @@
   "scripts": {
     "start": "vite dev",
     "publish:beta": "release-ops beta",
-    "publish:patch": "release-ops patch"
+    "publish:patch": "release-ops patch",
+    "build": "rollupx"
   },
   "dependencies": {
     "core-js": "^3.x",
