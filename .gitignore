@@ -4,6 +4,7 @@ stat
 lib
 package-lock.json
 types
+docs/.vitepress/cache
 
 # local env files
 .env.local
