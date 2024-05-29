@@ -12,8 +12,8 @@
   "module": "lib/es/index.js",
   "types": "types/index.d.ts",
   "files": [
-    "src",
-    "lib"
+    "lib",
+    "types"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
