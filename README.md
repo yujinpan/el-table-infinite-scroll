@@ -14,8 +14,10 @@ Infinite scroll for el-table.
 
 ### Install
 
+** Version >= 3 **
+
 ```sh
-npm install --save el-table-infinite-scroll
+npm install --save el-table-infinite-scroll@3
 ```
 
 ### Usage
@@ -99,6 +101,8 @@ Supported [element-plus/infinite-scroll](https://element-plus.org/zh-CN/componen
 ## vue2 + element-ui
 
 ### Install
+
+** Version ^ 2 **
 
 ```sh
 npm install --save el-table-infinite-scroll@2
