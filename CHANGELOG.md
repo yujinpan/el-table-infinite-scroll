@@ -1,3 +1,28 @@
+## [3.0.6](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.2...v3.0.6) (2024-07-12)
+
+## [3.0.5](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.4...v3.0.5) (2024-05-29)
+
+## [3.0.4](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.1...v3.0.4) (2024-05-29)
+
+## [3.0.3](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.2...v3.0.3) (2023-09-18)
+
+### Bug Fixes
+
+- use `Object.assign` replace `{...}` (libs will require @babel/runtime) ([b75152a](https://github.com/yujinpan/el-table-infinite-scroll/commit/b75152a56c5437d2bc7f59f2ebf9430cbde605ec))
+
+## [3.0.2](https://github.com/yujinpan/el-table-infinite-scroll/compare/01fc12cb5454babe6192caa1508cd287a70dc316...v3.0.2) (2023-09-18)
+
+### Bug Fixes
+
+- define type with `install` property ([8e82fb8](https://github.com/yujinpan/el-table-infinite-scroll/commit/8e82fb8275f8090328981a6f80053611759ba4b1))
+- unmounted failed ([0c1bae1](https://github.com/yujinpan/el-table-infinite-scroll/commit/0c1bae1531d3bb37266110c7f975607aefb2b7f5))
+
+### Features
+
+- add base dev dictionary ([e1830e0](https://github.com/yujinpan/el-table-infinite-scroll/commit/e1830e04a28141bd2b0bda5895fec46c48232e44))
+- develop environment upgrade to vite ([01fc12c](https://github.com/yujinpan/el-table-infinite-scroll/commit/01fc12cb5454babe6192caa1508cd287a70dc316))
+- directive upgrade to vue3 ([45e90b4](https://github.com/yujinpan/el-table-infinite-scroll/commit/45e90b4c57d0ea78cb2e358841d7756ddd8db694))
+
 ## [2.0.2](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.1...v2.0.2) (2024-05-29)
 
 ## [3.0.5](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.4...v3.0.5) (2024-05-29)
