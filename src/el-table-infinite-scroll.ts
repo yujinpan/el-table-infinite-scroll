@@ -1,21 +1,14 @@
-import { ElInfiniteScroll } from 'element-plus';
+import { ElInfiniteScroll, useGlobalConfig } from 'element-plus';
 
 import type { ObjectDirective } from 'vue';
 
 import { syncAttrs } from './utils';
 
 const msgTitle = '[el-table-infinite-scroll]: ';
-const elTableScrollWrapperClass = '.el-scrollbar__wrap';
 
 const ElTableInfiniteScroll: ObjectDirective = {
   mounted(el, binding, VNode, oldVNode) {
-    const scrollElem: HTMLElement = el.querySelector(elTableScrollWrapperClass);
-
-    if (!scrollElem) {
-      throw new Error(
-        `${msgTitle}${elTableScrollWrapperClass} element not found.`,
-      );
-    }
+    const { scrollElem } = useScrollElem(el);
 
     scrollElem.style.overflowY = 'auto';
 
@@ -41,10 +34,11 @@ const ElTableInfiniteScroll: ObjectDirective = {
     }, 0);
   },
   updated(el) {
-    syncOptions(el, el.querySelector(elTableScrollWrapperClass));
+    const { scrollElem } = useScrollElem(el);
+    syncOptions(el, scrollElem);
   },
   unmounted(el, ...args) {
-    const scrollElem: HTMLElement = el.querySelector(elTableScrollWrapperClass);
+    const { scrollElem } = useScrollElem(el);
     (
       ElInfiniteScroll.unmounted as Exclude<
         ObjectDirective['unmounted'],
@@ -55,6 +49,24 @@ const ElTableInfiniteScroll: ObjectDirective = {
 };
 
 export default ElTableInfiniteScroll;
+
+function useScrollElem(el: HTMLElement) {
+  const config = useGlobalConfig();
+  const elTableScrollWrapperClass = `.${
+    config.value?.namespace || 'el'
+  }-scrollbar__wrap`;
+  const scrollElem: HTMLElement = el.querySelector(
+    elTableScrollWrapperClass,
+  ) as HTMLElement;
+
+  if (!scrollElem) {
+    throw new Error(
+      `${msgTitle}${elTableScrollWrapperClass} element not found.`,
+    );
+  }
+
+  return { scrollElem };
+}
 
 function syncOptions(sourceElem: HTMLElement, targetElem: HTMLElement) {
   syncAttrs(sourceElem, targetElem, [
