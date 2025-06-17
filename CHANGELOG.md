@@ -1,3 +1,9 @@
+## [3.0.7](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.6...v3.0.7) (2025-06-17)
+
+### Bug Fixes
+
+- Scrollbar element not found when using custom namespace ([ade5e48](https://github.com/yujinpan/el-table-infinite-scroll/commit/ade5e4803e1ee2d4ac226d5274d1765e06ccf115))
+
 ## [3.0.6](https://github.com/yujinpan/el-table-infinite-scroll/compare/v2.0.2...v3.0.6) (2024-07-12)
 
 ## [3.0.5](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.4...v3.0.5) (2024-05-29)
