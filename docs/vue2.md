@@ -93,3 +93,20 @@ export default {
 ## Options
 
 Supported [element-ui/infinite-scroll](https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes) all options.
+
+## Infinite Scroll Up
+
+```vue
+<template>
+  <el-table
+    v-el-table-infinite-scroll-up="{
+      load,
+      disabled,
+    }"
+  ></el-table>
+</template>
+
+<script setup>
+import { default as vElTableInfiniteScrollUp } from "el-table-infinite-scroll/lib/es/el-table-infinite-scroll-up";
+</script>
+```

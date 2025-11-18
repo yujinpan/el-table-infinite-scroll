@@ -56,10 +56,12 @@ Supported [element-plus/infinite-scroll](https://element-plus.org/zh-CN/componen
 
 ```vue
 <template>
-  <el-table v-el-table-infinite-scroll-up="{
-    load,
-    disabled
-  }"></el-table>
+  <el-table
+    v-el-table-infinite-scroll-up="{
+      load,
+      disabled,
+    }"
+  ></el-table>
 </template>
 
 <script setup>
