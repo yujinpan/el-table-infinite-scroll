@@ -1,6 +1,6 @@
 import { throttle } from 'lodash-unified';
 
-import type { ObjectDirective } from 'vue';
+import type { App, ObjectDirective, Plugin } from 'vue';
 
 export type InfiniteScrollUpOptions = {
   load: () => void | Promise<void>;
@@ -18,7 +18,8 @@ const InfiniteScrollUp: ObjectDirective<
     };
   },
   InfiniteScrollUpOptions
-> = {
+> &
+  Plugin = {
   mounted(el, binding) {
     let loading = false;
 
@@ -57,6 +58,9 @@ const InfiniteScrollUp: ObjectDirective<
     if (handleScroll) {
       el.removeEventListener('scroll', handleScroll);
     }
+  },
+  install: (vue: App) => {
+    vue.directive('infinite-scroll-up', InfiniteScrollUp);
   },
 };
 

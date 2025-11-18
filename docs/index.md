@@ -51,3 +51,22 @@ Scroll table to bottom to load paginated data.
 ## Options
 
 Supported [element-plus/infinite-scroll](https://element-plus.org/zh-CN/component/infinite-scroll.html#指令) all options.
+
+## Infinite Scroll Up
+
+```vue
+<template>
+  <el-table v-el-table-infinite-scroll-up="{
+    load,
+    disabled
+  }"></el-table>
+</template>
+
+<script setup>
+import { default as vElTableInfiniteScrollUp } from "el-table-infinite-scroll/lib/es/el-table-infinite-scroll-up";
+</script>
+```
+
+Scroll table to up to load paginated data.
+
+<demo name="ScrollLoadUp" />
