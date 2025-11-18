@@ -6,6 +6,10 @@
         v-el-table-infinite-scroll="load"
         infinite-scroll-disabled="disabled"
         :data="tableData"
+        v-el-table-infinite-scroll-up="{
+          load: loadUp,
+          disabled: preDisabled,
+        }"
       >
         <el-table-column prop="date" label="日期" width="180">
         </el-table-column>
@@ -33,6 +37,7 @@
 </template>
 
 <script>
+import elTableInfiniteScrollUp from '@/el-table-infinite-scroll-up.ts';
 import elTableInfiniteScroll from '@/index.ts';
 
 const exampleData = new Array(10).fill({
@@ -44,12 +49,15 @@ const exampleData = new Array(10).fill({
 export default {
   directives: {
     'el-table-infinite-scroll': elTableInfiniteScroll,
+    'el-table-infinite-scroll-up': elTableInfiniteScrollUp,
   },
   data() {
     return {
       page: 1,
       disabled: false,
       tableData: exampleData,
+      prePage: 1,
+      preDisabled: false,
     };
   },
   methods: {
@@ -59,9 +67,19 @@ export default {
         this.$message.info('全部加载完毕（infinite-scroll-disabled="true"）');
       } else {
         this.$message.success('加载下一页');
+        this.tableData = this.tableData.concat(exampleData);
+        this.page++;
       }
-      this.tableData = this.tableData.concat(exampleData);
-      this.page++;
+    },
+    loadUp() {
+      if (this.prePage > 3) {
+        this.preDisabled = true;
+        this.$message.info(`上一页 ${this.prePage} 全部加载完毕`);
+      } else {
+        this.$message.success(`加载上一页 ${this.prePage}`);
+        this.tableData = exampleData.concat(this.tableData);
+        this.prePage++;
+      }
     },
   },
 };

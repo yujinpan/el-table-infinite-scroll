@@ -50,7 +50,7 @@ const ElTableInfiniteScroll: ObjectDirective = {
 
 export default ElTableInfiniteScroll;
 
-function useScrollElem(el: HTMLElement) {
+export function useScrollElem(el: HTMLElement) {
   const config = useGlobalConfig();
   const elTableScrollWrapperClass = `.${
     config.value?.namespace || 'el'
