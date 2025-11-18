@@ -2,7 +2,6 @@
 node_modules
 stat
 lib
-package-lock.json
 types
 docs/.vitepress/cache
 

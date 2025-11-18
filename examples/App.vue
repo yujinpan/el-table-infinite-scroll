@@ -22,6 +22,10 @@
       <el-table
         border
         v-el-table-infinite-scroll="load"
+        v-el-table-infinite-scroll-up="{
+          load: loadUp,
+          disabled: disabledUp,
+        }"
         infinite-scroll-disabled="disabled"
         height="auto"
         :data="tableData"
@@ -53,6 +57,7 @@
 
 <script>
 import pkg from '../package.json';
+import elTableInfiniteScrollUp from '@/el-table-infinite-scroll-up.ts';
 import elTableInfiniteScroll from '@/index.ts';
 
 const exampleData = new Array(10).fill({
@@ -64,6 +69,7 @@ const exampleData = new Array(10).fill({
 export default {
   directives: {
     'el-table-infinite-scroll': elTableInfiniteScroll,
+    'el-table-infinite-scroll-up': elTableInfiniteScrollUp,
   },
   data() {
     return {
@@ -78,6 +84,8 @@ export default {
         '右侧的列表为自适应高度，试试缩放浏览器的高度。',
         '配置参数请参考官网：<br /><a target="_blank" href="https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes">https://element.eleme.cn/#/zh-CN/component/infiniteScroll#attributes</a>',
       ],
+      prePage: 1,
+      disabledUp: false,
     };
   },
   methods: {
@@ -90,6 +98,16 @@ export default {
       }
       this.tableData = this.tableData.concat(exampleData);
       this.page++;
+    },
+    loadUp() {
+      if (this.prePage > 3) {
+        this.disabledUp = true;
+        this.$message.info('上一页全部加载完毕');
+      } else {
+        this.$message.success(`加载上一页 ${this.prePage}`);
+        this.tableData = this.tableData.concat(exampleData);
+        this.prePage++;
+      }
     },
   },
   mounted() {
