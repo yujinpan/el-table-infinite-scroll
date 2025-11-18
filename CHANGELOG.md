@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.7...v3.0.8) (2025-11-18)
+
+### Features
+
+- Add infinite-scroll-up/el-table-infinite-scroll-up directives ([c0dbc4b](https://github.com/yujinpan/el-table-infinite-scroll/commit/c0dbc4b17a5620c99794fb074544a639e4a705a8))
+- Add infinite-scroll-up/el-table-infinite-scroll-up directives and docs ([39367b2](https://github.com/yujinpan/el-table-infinite-scroll/commit/39367b26679de5ef1e10b5c8411ce87ef9292fbf))
+
 ## [3.0.7](https://github.com/yujinpan/el-table-infinite-scroll/compare/v3.0.6...v3.0.7) (2025-06-17)
 
 ### Bug Fixes
