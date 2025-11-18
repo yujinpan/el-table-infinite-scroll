@@ -1,5 +1,3 @@
-import { throttle } from 'lodash-unified';
-
 import type { App, ObjectDirective, Plugin } from 'vue';
 
 export type InfiniteScrollUpOptions = {
@@ -12,7 +10,7 @@ export type InfiniteScrollUpOptions = {
 
 const InfiniteScrollUp: ObjectDirective<
   HTMLElement & {
-    _ElTableInfiniteScrollUp: {
+    _InfiniteScrollStore: {
       handleScroll: () => void;
       options: InfiniteScrollUpOptions;
     };
@@ -23,7 +21,7 @@ const InfiniteScrollUp: ObjectDirective<
   mounted(el, binding) {
     let loading = false;
 
-    const store = (el._ElTableInfiniteScrollUp = {
+    const store = (el._InfiniteScrollStore = {
       handleScroll: throttle(async () => {
         if (
           !loading &&
@@ -50,10 +48,10 @@ const InfiniteScrollUp: ObjectDirective<
     }
   },
   updated(el, binding) {
-    Object.assign(el._ElTableInfiniteScrollUp.options, binding.value);
+    Object.assign(el._InfiniteScrollStore.options, binding.value);
   },
   unmounted(el) {
-    const { handleScroll } = el._ElTableInfiniteScrollUp || {};
+    const { handleScroll } = el._InfiniteScrollStore || {};
 
     if (handleScroll) {
       el.removeEventListener('scroll', handleScroll);
@@ -65,3 +63,26 @@ const InfiniteScrollUp: ObjectDirective<
 };
 
 export default InfiniteScrollUp;
+
+export function throttle(func: () => void, wait: number) {
+  let waiting = false; // 标记是否处于等待间隔中
+
+  return function () {
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const context = this;
+    // eslint-disable-next-line prefer-rest-params
+    const args = arguments;
+
+    if (!waiting) {
+      waiting = true;
+
+      setTimeout(() => {
+        // @ts-ignore
+        func.apply(context, args);
+
+        waiting = false;
+      }, wait);
+    }
+  };
+}
